@@ -7,9 +7,10 @@ totparcelas = 0
 print('---' * 24)
 print(f'\033[7;40m{"  CRÉDITO PARA TODXS - EMPRÉSTIMO PESSOAL  ":*^72}\033[0;0m')
 print('---' * 24)
-print('Nossas análises e linhas de Créditos é com base em parcelas de no máximo\n30% do seu salário, para que assim nossos clientes tenham mais saúde\nfinanceira e segurança! ')
+print('A melhor taxa do mercado, 2% ao mês. Além disso nossas análises e linhas\nde Créditos é com base em parcelas de no máximo 30% do seu salário, para\nque assim nossos clientes tenham mais saúde financeira e segurança! ')
 print('---' * 24)
-
+print(' -----------| TEMOS UMA PROPOSTA PARA VOCÊ! SIMULE AGORA! |-----------')
+print('---' * 24)
 nome = str(input('Digite seu nome:'))
 print('---' * 24)
 while True:
@@ -37,7 +38,7 @@ while True:
         print(f'\033[1;41mVALOR INVÁLIDO - DIGITE SOMENTE NÚMEROS :\033[0;0m')
 
 while True:
-    emprestado = str(input('Digite o valor que você precisa:? R$:')).strip().replace('.','').replace(',','')
+    emprestado = str(input('Digite o valor que você deseja financiar:? R$:')).strip().replace('.','').replace(',','')
     print('---' * 24)
     if emprestado.isnumeric():
         valoremprestado = float(emprestado)
@@ -47,28 +48,46 @@ while True:
         print(f'\033[1;41mVALOR INVÁLIDO - DIGITE SOMENTE NÚMEROS :\033[0;0m')
 
 while True:
-    parcelas = str(input('Em quantas parcelas você gostaria de pagar o valor emprestado:?')).strip().replace('.','').replace(',','')
+    parcelas = str(input('Em quantas parcelas você gostaria de pagar seu financiamento:?')).strip().replace('.','').replace(',','')
     print('---' * 24)
 
     if parcelas.isnumeric():
         totparcelas = int(parcelas)
         print(f'{totparcelas} parcelas'.replace('.',','))
+
+        if totparcelas < 6:
+            print(f'\033[1;41mA QUANTIDADE MÍNIMA DE PARCELAS É 6: [DIGITE NOVAMENTE]:\033[0;0m')
+            continue
+
+
         break
     else:
         print(f'\033[1;41mVALOR INVÁLIDO - DIGITE SOMENTE NÚMEROS :\033[0;0m')
 
-print('---' * 24)
-print(f'Muito Obrigado Sr {nome}. Com base nas informações inseridas ')
-print(f'em nosso sistema. Temos uma excelente proposta para você !')
-print('---' * 24)
-print('///' * 24)
-print('---' * 24)
-print()
-print()
-print('\033[1;42m\033[1;30mEscrita...\033[0;0m')
-print()
-print()
-print('---' * 24)
-print('///' * 24)
-print('---' * 24)
+# AQUI IRÁ TODO O CALCULO DO SISTEMA
+
+resultado = float(valoremprestado/totparcelas)
+addjurosmensal = float(0.02*resultado)
+somatudo = float(resultado+addjurosmensal)
+analisefinal = float(0.30*salariocliente)
+
+if somatudo > analisefinal:
+    print('---' * 24)
+    print(f'Muito Obrigado Sr {nome}. Com base nas informações inseridas ')
+    print(f'em nosso sistema. Temos uma excelente proposta para você !')
+    print('---' * 24)
+    print(f' ///////////////////////// ---|\033[1;41m NEGADO ! \033[0;0m|--- /////////////////////////')
+    # print('///' * 24)
+    print('---' * 24)
+    print()
+    print(f'Infelizmente sua solicitação foi negada por que o valor de sua parcela\né superior a 30% do seu salário! Queremos muito ajudar você ! Tente uma\nnova simulação com mais de {totparcelas} parcelas, ou escolha um valor de\nfinanciamento inferior a {valoremprestado:.2f}')
+    print()
+    print(f'Você optou por financiar R$: {valoremprestado:.2f} em {totparcelas} parcelas dê R$ {somatudo:.2f}.')
+    print()
+    print('---' * 24)
+    print('///' * 24)
+    print('---' * 24)
+
+
+
 print('                -------- | FIM DO PROGRAMA | --------')
