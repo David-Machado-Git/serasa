@@ -24,14 +24,14 @@ while True:
             nome = str(input('*Por favor digite seu nome completo:'))
 
     while True:
-        n = str(input(f'Seu nome completo é: {nome} :? Digite [S - SIM ou C - CORRIGIR]:?')).strip().upper()[0]
+        n = str(input(f'Seu nome completo é: {nome} :? Digite [S - SIM ou C - CORRIGIR]:?')).strip().upper()
         print('---' * 24)
         if n == 'S':
             break
         elif n == 'C':
             print('(*corrigindo) - ',end=' ')
             nome = str(input('*Digite seu nome completo:'))
-        elif n != 'S' or 'C':
+        elif n == '':
             print(f'\033[1;41mDIGITE APENAS [S - SIM ou C - CORRIGIR]:\033[0;0m')
             if n == 'S':
                 break
@@ -145,8 +145,40 @@ while True:
             print('Abaixo seguem as informações já inseridas:')
             print(f'Nome completo:{nome}')
             print(f'Seu número de CPF é: {cpf}')
+            print('---' * 24)
+            print('Para concluir a contratação necessitaremos novas informações.\nPreencha o formulário a seguir:')
+            print('---' * 24)
+
+            estado = str(input('Estado onde reside:?'))
+
+            print('---' * 24)
 
 
+            cidade = str(input('Cidade onde reside:?'))
+
+
+            print('---' * 24)
+
+
+            endereco = str(input('Endereço:?'))
+
+
+
+            print('---' * 24)
+
+
+            cep = str(input('Digite seu CEP:?'))
+
+
+
+
+            print('---' * 24)
+
+
+            estado_civil = str(input('Estado civil:?'))
+
+
+            print('---' * 24)
 
 
 
